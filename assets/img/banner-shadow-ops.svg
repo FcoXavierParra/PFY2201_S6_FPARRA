@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-label="Banner de Shadow Ops">
+  <defs>
+    <linearGradient id="shadowNoche" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#14181c"/>
+      <stop offset="100%" stop-color="#1f262d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="500" fill="url(#shadowNoche)"/>
+  <g stroke="#ff5c4d" stroke-width="5" fill="none" opacity="0.9">
+    <circle cx="960" cy="250" r="105"/>
+    <circle cx="960" cy="250" r="52"/>
+    <line x1="960" y1="105" x2="960" y2="185"/>
+    <line x1="960" y1="315" x2="960" y2="395"/>
+    <line x1="815" y1="250" x2="895" y2="250"/>
+    <line x1="1025" y1="250" x2="1105" y2="250"/>
+  </g>
+  <path d="M0 500 L180 400 L360 450 L560 390 L760 440 L1200 400 L1200 500 Z" fill="#0d1014"/>
+  <text x="80" y="235" font-family="Georgia, serif" font-size="82" font-weight="bold" fill="#f5f2ff">SHADOW OPS</text>
+  <text x="80" y="290" font-family="Georgia, serif" font-size="30" fill="#8b969f">Shooter táctico</text>
+</svg>

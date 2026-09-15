@@ -1,0 +1,97 @@
+{
+  "actualizado": "2026-09-15",
+  "tienda": "Nexus Play",
+  "fuente": "Catálogo de productos de Nexus Play",
+  "productos": [
+    {
+      "id": 1,
+      "titulo": "Elden Realms",
+      "genero": "RPG",
+      "precio": 44990,
+      "imagen": "assets/img/elden-realms.svg",
+      "alt": "Portada del videojuego Elden Realms",
+      "descripcion": "RPG de mundo abierto con combate por resistencia y exploración libre. Disponible para PC y consola.",
+      "lanzamiento": null
+    },
+    {
+      "id": 2,
+      "titulo": "Velocity GP",
+      "genero": "Deportes",
+      "precio": 32990,
+      "imagen": "assets/img/velocity-gp.svg",
+      "alt": "Portada del videojuego Velocity GP",
+      "descripcion": "Carreras arcade con 24 circuitos y modo multijugador local para cuatro jugadores.",
+      "lanzamiento": null
+    },
+    {
+      "id": 3,
+      "titulo": "Shadow Ops",
+      "genero": "Acción",
+      "precio": 39990,
+      "imagen": "assets/img/shadow-ops.svg",
+      "alt": "Portada del videojuego Shadow Ops",
+      "descripcion": "Shooter táctico por equipos, con campaña cooperativa y progresión de personaje.",
+      "lanzamiento": null
+    },
+    {
+      "id": 4,
+      "titulo": "Pixel Kingdom",
+      "genero": "Aventura",
+      "precio": 19990,
+      "imagen": "assets/img/pixel-kingdom.svg",
+      "alt": "Portada del videojuego Pixel Kingdom",
+      "descripcion": "Aventura indie de estilo retro, con puzles y una historia de más de veinte horas.",
+      "lanzamiento": null
+    },
+    {
+      "id": 5,
+      "titulo": "Aurora Drift",
+      "genero": "Deportes",
+      "precio": 34990,
+      "imagen": "assets/img/aurora-drift.svg",
+      "alt": "Portada del videojuego Aurora Drift",
+      "descripcion": "Carreras nocturnas por ciudades costeras, con clima dinámico y campeonato cooperativo para dos jugadores.",
+      "lanzamiento": "2026-10-03"
+    },
+    {
+      "id": 6,
+      "titulo": "Umbral Profundo",
+      "genero": "RPG",
+      "precio": 44990,
+      "imagen": "assets/img/umbral-profundo.svg",
+      "alt": "Portada del videojuego Umbral Profundo",
+      "descripcion": "RPG por turnos ambientado bajo el océano, con un sistema de reputación que cambia el final de cada campaña.",
+      "lanzamiento": "2026-10-21"
+    },
+    {
+      "id": 7,
+      "titulo": "Torre de Hierro",
+      "genero": "Estrategia",
+      "precio": 29990,
+      "imagen": "assets/img/torre-de-hierro.svg",
+      "alt": "Portada del videojuego Torre de Hierro",
+      "descripcion": "Estrategia en tiempo real de defensa vertical: cada piso conquistado altera las reglas del siguiente.",
+      "lanzamiento": "2026-11-08"
+    },
+    {
+      "id": 8,
+      "titulo": "Bosque de Cenizas",
+      "genero": "Aventura",
+      "precio": 24990,
+      "imagen": "assets/img/bosque-de-cenizas.svg",
+      "alt": "Portada del videojuego Bosque de Cenizas",
+      "descripcion": "Aventura narrativa sin combate, donde el avance depende de reconstruir la memoria del bosque.",
+      "lanzamiento": "2026-11-27"
+    },
+    {
+      "id": 9,
+      "titulo": "Contragolpe",
+      "genero": "Acción",
+      "precio": 39990,
+      "imagen": "assets/img/contragolpe.svg",
+      "alt": "Portada del videojuego Contragolpe",
+      "descripcion": "Acción táctica por rondas cortas, con mapas destructibles y progresión de escuadra entre partidas.",
+      "lanzamiento": "2026-12-12"
+    }
+  ]
+}

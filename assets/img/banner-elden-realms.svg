@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-label="Banner de Elden Realms">
+  <defs>
+    <linearGradient id="eldenCielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a1a3e"/>
+      <stop offset="100%" stop-color="#4b2f6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="500" fill="url(#eldenCielo)"/>
+  <circle cx="960" cy="130" r="58" fill="#f0c04a"/>
+  <path d="M0 500 L200 300 L340 380 L520 240 L700 400 L880 320 L1060 420 L1200 350 L1200 500 Z" fill="#2a1a3e" opacity="0.85"/>
+  <path d="M0 500 L260 380 L470 440 L720 360 L960 460 L1200 420 L1200 500 Z" fill="#1b1028"/>
+  <text x="80" y="235" font-family="Georgia, serif" font-size="82" font-weight="bold" fill="#f5f2ff">ELDEN REALMS</text>
+  <text x="80" y="290" font-family="Georgia, serif" font-size="30" fill="#c9bce0">RPG de mundo abierto</text>
+</svg>

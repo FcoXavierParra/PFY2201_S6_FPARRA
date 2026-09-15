@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400" width="320" height="400" role="img" aria-label="Portada de Contragolpe">
+  <rect width="320" height="400" fill="#1c1013"/>
+  <path d="M0 0l320 140v60L0 60z" fill="#3a1b22"/>
+  <path d="M0 400l320-150v-40L0 340z" fill="#3a1b22"/>
+  <circle cx="160" cy="200" r="52" fill="none" stroke="#e04b5a" stroke-width="6"/>
+  <path d="M160 130v30M160 240v30M100 200h30M190 200h30" stroke="#e04b5a" stroke-width="6"/>
+  <text x="160" y="330" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" fill="#ffeef0" text-anchor="middle">CONTRAGOLPE</text>
+  <text x="160" y="376" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#d69aa1" text-anchor="middle">Acción</text>
+</svg>

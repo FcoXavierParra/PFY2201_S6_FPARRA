@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<!-- Declara el tipo de documento: HTML5 -->
+<html lang="es" data-bs-theme="dark">
+<!-- lang="es" para accesibilidad y lectores de pantalla.
+     data-bs-theme="dark" activa el modo oscuro NATIVO de Bootstrap 5.3: el
+     framework recalcula sus colores de fondo, texto y bordes. Sobre esa base,
+     assets/css/estilos.css reasigna algunas variables a la paleta propia. -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Codificación UTF-8: permite acentos y caracteres especiales (ñ, á, é) -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport: imprescindible para el diseño responsivo de Bootstrap -->
+
+    <meta name="description" content="Nexus Play, tienda de videojuegos: acción, aventura, RPG, deportes y estrategia.">
+    <!-- Descripción breve del sitio, usada por los buscadores -->
+
+    <title>Nexus Play — Tienda de videojuegos</title>
+
+    <!-- ============================================================
+         BOOTSTRAP 5.3.8 — hoja de estilos por CDN
+         Va ANTES de la hoja propia, para que la propia pueda ajustarla.
+         ============================================================ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Hoja propia: solo la identidad visual del sitio sobre Bootstrap -->
+    <link href="assets/css/estilos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         CABECERA Y NAVEGACIÓN
+         Componente NAVBAR de Bootstrap. La clase navbar-expand-lg hace
+         que el menú se muestre en fila desde 992 px y se colapse por
+         debajo, detrás del botón hamburguesa.
+         ============================================================ -->
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top border-bottom border-3 border-primary" aria-label="Menú principal">
+            <div class="container">
+
+                <!-- Marca: logo y nombre de la tienda, enlazados al inicio -->
+                <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
+                    <img src="assets/img/logo.svg" alt="Logo de Nexus Play: un mando de videojuegos junto a las letras NP" width="40" height="40">
+                    <span class="fw-bold">Nexus Play</span>
+                </a>
+
+                <!-- Botón hamburguesa: aparece solo por debajo de 992 px.
+                     data-bs-toggle y data-bs-target los usa el JavaScript de
+                     Bootstrap para mostrar y ocultar el menú. Sin ese JS el
+                     botón no haría nada. -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir o cerrar el menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Contenedor colapsable con los enlaces, las categorías
+                     simuladas y el buscador -->
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+
+                        <!-- CATEGORÍAS SIMULADAS dentro de la navegación.
+                             Son dos géneros reales del catálogo, no secciones de la
+                             página: al pulsarlos el script filtra el catálogo. El
+                             desplegable lo abre el JavaScript de Bootstrap. -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#productos" id="menuCategorias" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías</a>
+                            <ul class="dropdown-menu" aria-labelledby="menuCategorias">
+                                <li><button type="button" class="dropdown-item filtro-categoria" data-categoria="RPG">RPG</button></li>
+                                <li><button type="button" class="dropdown-item filtro-categoria" data-categoria="Acción">Acción</button></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button type="button" class="dropdown-item filtro-categoria" data-categoria="todas">Ver todas</button></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="#carrito">Carrito <span id="contadorCarrito" class="badge text-bg-primary">0</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+
+                    <!-- BUSCADOR: el evento submit lo intercepta JavaScript, filtra
+                         el catálogo y evita que la página se recargue.
+                         role="search" es la semántica de accesibilidad para un
+                         formulario de búsqueda. -->
+                    <form id="formBusqueda" class="d-flex gap-2 w-100 mt-3 mt-lg-0" role="search" novalidate>
+                        <label for="campoBusqueda" class="visually-hidden">Buscar un videojuego</label>
+                        <input id="campoBusqueda" name="q" class="form-control form-control-sm" type="search" placeholder="Buscar un juego" aria-label="Buscar un videojuego">
+                        <button class="btn btn-sm btn-primary" type="submit">Buscar</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             SECCIÓN 1: CARRUSEL de juegos destacados
+             Componente CAROUSEL de Bootstrap.
+               data-bs-ride="carousel"   arranca el paso automático solo
+               data-bs-interval="3000"   cambia cada 3 segundos (por omisión
+                                         Bootstrap usa 5000, así que hay que
+                                         declararlo)
+             ============================================================ -->
+        <section id="destacados" aria-label="Juegos destacados">
+
+            <div id="carruselDestacados" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+
+                <!-- Indicadores: los puntos que marcan la diapositiva actual -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carruselDestacados" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Ir a Elden Realms"></button>
+                    <button type="button" data-bs-target="#carruselDestacados" data-bs-slide-to="1" aria-label="Ir a Velocity GP"></button>
+                    <button type="button" data-bs-target="#carruselDestacados" data-bs-slide-to="2" aria-label="Ir a Shadow Ops"></button>
+                </div>
+
+                <!-- Diapositivas -->
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <img src="assets/img/banner-elden-realms.svg" class="d-block w-100" alt="Elden Realms: paisaje de montañas al atardecer con el título del juego">
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="assets/img/banner-velocity-gp.svg" class="d-block w-100" alt="Velocity GP: pista de carreras con líneas de velocidad y el título del juego">
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="assets/img/banner-shadow-ops.svg" class="d-block w-100" alt="Shadow Ops: mira de puntería sobre un fondo nocturno con el título del juego">
+                    </div>
+
+                </div>
+
+                <!-- Controles anterior y siguiente -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carruselDestacados" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carruselDestacados" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- El container centra el contenido y le pone márgenes laterales -->
+        <div class="container">
+
+            <!-- ============================================================
+                 SECCIÓN 2: presentación de la tienda
+                 SISTEMA DE CUADRÍCULAS: row con dos col-md-6, de modo que
+                 los párrafos van uno bajo otro en móvil y en dos columnas
+                 desde 768 px.
+                 ============================================================ -->
+            <section id="inicio" class="py-5">
+
+                <h1 class="text-center">Nexus Play</h1>
+                <!-- Encabezado de nivel 1: solo uno por página -->
+
+                <p class="text-center fs-5 fst-italic text-body-secondary mb-4">Tu próximo nivel empieza aquí.</p>
+
+                <h2 class="h4 border-bottom border-secondary pb-2 mb-4">Bienvenido a la tienda</h2>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <p class="mb-0">
+                            En <strong>Nexus Play</strong> encuentras videojuegos para todas las
+                            plataformas: consolas de última generación, PC y portátiles. Trabajamos
+                            con distribuidores oficiales, así que cada copia que vendemos es original
+                            y con garantía.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-0">
+                            Llevamos más de diez años acompañando a la comunidad gamer de Chile, con
+                            envíos a todo el país y despacho gratuito sobre $40.000.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ============================================================
+                 SECCIÓN 3: CATÁLOGO DE PRODUCTOS
+
+                 Llega VACÍO en el HTML. JavaScript pide assets/data/productos.json
+                 con la Fetch API y construye una tarjeta por producto -imagen,
+                 nombre, precio y botón de compra- con createElement y appendChild.
+
+                 Las clases del col definen cuántas tarjetas caben por fila:
+                   móvil        1  (col-12 implícito)
+                   ≥ 576 px     2  (col-sm-6)
+                   ≥ 992 px     4  (col-lg-3)
+
+                 Si la carga falla, el propio contenedor muestra un aviso
+                 en lugar de quedarse en blanco.
+                 ============================================================ -->
+            <section id="productos" class="py-5">
+
+                <h2 class="h4 border-bottom border-secondary pb-2 mb-4">Catálogo de productos</h2>
+
+                <p>Nuestro catálogo completo, cargado desde el archivo de datos de la tienda:</p>
+
+                <!-- Estado de la carga y respuesta a los filtros: lo escribe el
+                     script. aria-live avisa a los lectores de pantalla de cada
+                     cambio sin interrumpir al usuario. -->
+                <p id="estadoCatalogo" class="small text-body-secondary" role="status" aria-live="polite">Cargando catálogo…</p>
+
+                <!-- Contenedor que rellena el script -->
+                <div id="listaProductos" class="row g-4"></div>
+
+            </section>
+
+            <!-- ============================================================
+                 SECCIÓN NUEVA: CARRITO DE COMPRAS
+
+                 El "área designada" donde el script muestra el resumen: cada
+                 producto agregado, su cantidad, el subtotal y el total general.
+                 Llega vacía y se repinta entera en cada cambio.
+                 ============================================================ -->
+            <section id="carrito" class="py-5">
+
+                <h2 class="h4 border-bottom border-secondary pb-2 mb-4">Tu carrito</h2>
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <!-- Resumen dinámico: lo construye pintarResumenCarrito() -->
+                        <div id="resumenCarrito" aria-live="polite"></div>
+
+                        <div class="d-flex justify-content-between align-items-center border-top border-secondary pt-3 mt-3">
+                            <span class="fw-bold">Total</span>
+                            <span id="totalCarrito" class="fw-bold text-primary fs-5">$0</span>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button type="button" id="botonVaciar" class="btn btn-sm btn-outline-secondary">Vaciar carrito</button>
+                            <!-- Abre el MODAL de Bootstrap con el formulario de compra.
+                                 data-bs-toggle y data-bs-target los usa el JavaScript
+                                 del framework; el script solo lo habilita o deshabilita
+                                 según haya productos en el carrito. -->
+                            <button type="button" id="botonFinalizar" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalCompra">Finalizar compra</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+            <!-- ============================================================
+                 SECCIÓN 4 y 5, en una misma fila de la cuadrícula:
+                 el formulario ocupa 7 de 12 columnas y las categorías 5,
+                 desde 992 px. Por debajo se apilan.
+                 ============================================================ -->
+            <div class="row g-4 pb-5">
+
+                <!-- Contacto con formulario -->
+                <section id="contacto" class="col-lg-7">
+
+                    <h2 class="h4 border-bottom border-secondary pb-2 mb-4">Contacto</h2>
+
+                    <p>
+                        ¿Tienes dudas sobre un producto o sobre el estado de tu pedido?
+                        Escríbenos y te respondemos en menos de 24 horas hábiles.
+                    </p>
+
+                    <!-- Formulario de demostración: no hay servidor que reciba los
+                         datos. Con method="get" el navegador solo recarga la página;
+                         con method="post" un alojamiento estático como GitHub Pages
+                         responde 405. La validación del navegador (required,
+                         type="email") sí funciona. -->
+                    <!-- novalidate desactiva la validación del navegador para que la
+                         haga JavaScript, y así poder mostrar un mensaje propio.
+                         Los atributos required y type="email" se conservan porque
+                         documentan la intención y el teclado del móvil los usa. -->
+                    <form id="formContacto" method="get" class="row g-3" novalidate>
+
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Nombre y apellido</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ada Lovelace" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="correo" name="correo" placeholder="tucorreo@ejemplo.cl" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="asunto" class="form-label">Motivo de contacto</label>
+                            <select class="form-select" id="asunto" name="asunto">
+                                <option value="producto">Consulta por un producto</option>
+                                <option value="pedido">Estado de mi pedido</option>
+                                <option value="despacho">Despacho y envíos</option>
+                                <option value="otro">Otro motivo</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos en qué podemos ayudarte." required></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="copia" name="copia">
+                                <label class="form-check-label" for="copia">Quiero recibir una copia de mi mensaje</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                        </div>
+
+                        <!-- Aquí JavaScript escribe el resultado de la validación -->
+                        <div class="col-12" id="mensajeFormulario" role="status" aria-live="polite"></div>
+
+                    </form>
+
+                </section>
+
+                <!-- Categorías y ranking -->
+                <section id="categorias" class="col-lg-5">
+
+                    <h2 class="h4 border-bottom border-secondary pb-2 mb-4">Categorías</h2>
+
+                    <p>Explora nuestro catálogo por género:</p>
+
+                    <!-- Las categorías pasan a ser BOTONES: al pulsarlos, JavaScript
+                         filtra los productos destacados mostrando solo los del género
+                         elegido. El género de cada producto viaja en su atributo
+                         data-genero. -->
+                    <ul class="list-unstyled d-flex flex-wrap gap-2 mb-4">
+                        <li><button type="button" class="badge text-bg-secondary border-0 filtro-categoria activo" data-categoria="todas">Todas</button></li>
+                        <li><button type="button" class="badge text-bg-secondary border-0 filtro-categoria" data-categoria="Acción">Acción</button></li>
+                        <li><button type="button" class="badge text-bg-secondary border-0 filtro-categoria" data-categoria="Aventura">Aventura</button></li>
+                        <li><button type="button" class="badge text-bg-secondary border-0 filtro-categoria" data-categoria="RPG">RPG</button></li>
+                        <li><button type="button" class="badge text-bg-secondary border-0 filtro-categoria" data-categoria="Deportes">Deportes</button></li>
+                        <li><button type="button" class="badge text-bg-secondary border-0 filtro-categoria" data-categoria="Estrategia">Estrategia</button></li>
+                    </ul>
+
+                    <!-- Respuesta al clic: JavaScript escribe aquí qué se está
+                         mostrando. Va junto a los botones para que el efecto se vea
+                         sin tener que desplazarse hasta los productos. -->
+                    <p id="avisoFiltro" class="small text-body-secondary" role="status" aria-live="polite"></p>
+
+                    <h3 class="h6">Los más vendidos del mes</h3>
+
+                    <!-- Lista ordenada: aquí el número sí tiene significado.
+                         list-group presenta el ranking como una lista de tarjetas. -->
+                    <!-- El ranking también responde al filtro de categorías.
+                         La posición va escrita en el marcado y no con la clase
+                         list-group-numbered de Bootstrap, que usa un contador CSS:
+                         al ocultar elementos renumeraría desde 1 y mostraría un
+                         puesto falso. Así el número sigue siendo el real. -->
+                    <ol class="list-group ranking">
+                        <li class="list-group-item d-flex align-items-center gap-2" data-genero="RPG">
+                            <span class="badge text-bg-secondary">1</span> Elden Realms
+                        </li>
+                        <li class="list-group-item d-flex align-items-center gap-2" data-genero="Acción">
+                            <span class="badge text-bg-secondary">2</span> Shadow Ops
+                        </li>
+                        <li class="list-group-item d-flex align-items-center gap-2" data-genero="Deportes">
+                            <span class="badge text-bg-secondary">3</span> Velocity GP
+                        </li>
+                        <li class="list-group-item d-flex align-items-center gap-2" data-genero="Aventura">
+                            <span class="badge text-bg-secondary">4</span> Pixel Kingdom
+                        </li>
+                    </ol>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ============================================================
+         PIE DE PÁGINA: solo información de cierre.
+         Se reparte en dos columnas con la cuadrícula.
+         ============================================================ -->
+    <footer id="pie" class="border-top border-3 border-primary py-5">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-md-6">
+                    <h2 class="h6">Visítanos</h2>
+                    <address class="mb-0 text-body-secondary">
+                        <!-- address es la etiqueta semántica para datos de contacto -->
+                        Avenida Providencia 1234, Santiago, Chile<br>
+                        Teléfono: <a href="tel:+56221234567">+56 2 2123 4567</a><br>
+                        Correo: <a href="mailto:contacto@nexusplay.cl">contacto@nexusplay.cl</a>
+                    </address>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="h6">Síguenos</h2>
+                    <!-- Enlaces externos: se abren en pestaña nueva, con
+                         rel="noopener noreferrer" como medida de seguridad -->
+                    <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+                        <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                        <li><a href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 border-top border-secondary pt-3 text-center">
+                    <p class="mb-0 small text-body-secondary">Copyright &copy; 2026 Nexus Play. Todos los derechos reservados.</p>
+                    <!-- &copy; es la entidad HTML del símbolo © -->
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         MODAL DE COMPRA
+
+         Componente MODAL de Bootstrap. Vive fuera de <main> porque es
+         una capa superpuesta, no contenido de la página.
+
+         Tiene dos pasos dentro del mismo cuadro:
+           1. El formulario con los datos de despacho.
+           2. La boleta simulada, que el script construye tras validar.
+         El segundo llega con el atributo hidden y lo destapa el script.
+         ============================================================ -->
+    <!-- role="dialog" es necesario para que aria-labelledby sea válido en
+         un <div>: sin un rol propio, el validador del W3C lo rechaza. -->
+    <div class="modal fade" id="modalCompra" tabindex="-1" role="dialog" aria-labelledby="tituloModalCompra" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="tituloModalCompra">Finalizar compra</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <!-- novalidate: la validación la hace el script, igual que en
+                     el formulario de contacto, para dar un mensaje propio -->
+                <form id="formCompra" novalidate>
+
+                    <div class="modal-body">
+
+                        <!-- PASO 1: datos de despacho -->
+                        <div id="pasoDatos">
+
+                            <p class="small text-body-secondary">
+                                Compra de demostración: no se procesa ningún pago real.
+                            </p>
+
+                            <div class="mb-3">
+                                <label for="compraNombre" class="form-label">Nombre y apellido</label>
+                                <input type="text" class="form-control" id="compraNombre" name="compraNombre" placeholder="Ada Lovelace" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="compraCorreo" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="compraCorreo" name="compraCorreo" placeholder="tucorreo@ejemplo.cl" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="compraDireccion" class="form-label">Dirección de despacho</label>
+                                <input type="text" class="form-control" id="compraDireccion" name="compraDireccion" placeholder="Calle 123, comuna, ciudad" required>
+                            </div>
+
+                            <!-- Resumen de lo que se va a comprar, lo pinta el script -->
+                            <div id="resumenCompra" class="border-top border-secondary pt-3"></div>
+
+                            <!-- Aquí el script escribe los errores de validación -->
+                            <div id="mensajeCompra" class="mt-3" role="status" aria-live="polite"></div>
+
+                        </div>
+
+                        <!-- PASO 2: boleta simulada, la construye el script -->
+                        <div id="boleta" hidden></div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" id="botonConfirmar">Confirmar compra</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         BOOTSTRAP 5.3.8 — JavaScript por CDN
+         IMPRESCINDIBLE: es lo que hace funcionar el colapso de la navbar
+         y el avance automático del carrusel. Sin este archivo ambos
+         componentes quedan inertes. Va al final del body para que la
+         página se muestre antes de descargarlo.
+         ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ============================================================
+         SCRIPT PROPIO: manipulación del DOM, eventos y Fetch API.
+         Va después del de Bootstrap y al final del body, de modo que
+         el documento ya existe cuando el script se ejecuta.
+         ============================================================ -->
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

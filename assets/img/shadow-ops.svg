@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400" width="320" height="400" role="img" aria-label="Portada de Shadow Ops">
+  <rect width="320" height="400" fill="#14181c"/>
+  <path d="M0 320l80-40 80 30 80-50 80 40v100H0z" fill="#1f262d"/>
+  <circle cx="160" cy="150" r="62" fill="none" stroke="#ff5c4d" stroke-width="6"/>
+  <path d="M160 78v144M88 150h144" stroke="#ff5c4d" stroke-width="6"/>
+  <circle cx="160" cy="150" r="10" fill="#ff5c4d"/>
+  <text x="160" y="268" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#f5f2ff" text-anchor="middle">SHADOW OPS</text>
+  <text x="160" y="376" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#8b969f" text-anchor="middle">SHOOTER TÁCTICO</text>
+</svg>

@@ -1,0 +1,216 @@
+/* ============================================================
+   Nexus Play - Capa de estilo propio sobre Bootstrap 5
+   PFY2201 Desarrollo Frontend I - Duoc UC
+   Actividad Sumativa 2 (Semana 6): "Optimizando la logica y rendimiento"
+
+   Esta hoja NO reemplaza a Bootstrap ni pelea con sus clases: le
+   reasigna sus propias variables para conservar la identidad visual
+   que el sitio traia de las semanas anteriores.
+
+   Se enlaza DESPUES de bootstrap.min.css, o el framework la sobrescribiria.
+   ============================================================ */
+
+
+/* ============================================================
+   1. LA PALETA PROPIA SOBRE LAS VARIABLES DE BOOTSTRAP
+
+   Bootstrap 5.3 define sus colores como variables CSS, asi que
+   basta reasignarlas para que TODOS sus componentes -navbar,
+   cards, badges, botones, formularios- adopten la paleta del sitio
+   sin tocar una sola de sus clases.
+
+   El atributo data-bs-theme="dark" del <html> ya activo el modo
+   oscuro nativo del framework; aqui solo se ajustan los tonos a los
+   de Nexus Play.
+   ============================================================ */
+:root {
+
+    /* ---------- Paleta heredada de las semanas anteriores ---------- */
+    --np-fondo: #10101a;
+    --np-superficie: #1b1b2b;
+    --np-superficie-alta: #232338;
+    --np-texto: #e8e8f0;
+    --np-texto-suave: #a5a5bb;
+    --np-acento: #8b6cff;
+    --np-borde: #2e2e45;
+
+    /* ---------- Reasignacion a las variables de Bootstrap ---------- */
+    --bs-body-bg: var(--np-fondo);
+    --bs-body-color: var(--np-texto);
+    --bs-secondary-color: var(--np-texto-suave);
+    --bs-border-color: var(--np-borde);
+
+    /* El color de marca: Bootstrap lo usa en .text-primary, .btn-primary
+       y .border-primary. Necesita tambien la variante en RGB, porque
+       varias de sus reglas la componen con transparencia. */
+    --bs-primary: var(--np-acento);
+    --bs-primary-rgb: 139, 108, 255;
+
+    /* Tipografia: la misma combinacion de las semanas anteriores,
+       serif para leer y sans-serif para titular */
+    --bs-body-font-family: Georgia, "Times New Roman", serif;
+    --bs-body-line-height: 1.6;
+}
+
+/* Superficies: las cajas de Bootstrap usan estas variables para su fondo */
+.card,
+.list-group-item,
+.form-control,
+.form-select {
+    --bs-card-bg: var(--np-superficie-alta);
+    --bs-list-group-bg: var(--np-superficie);
+    background-color: var(--np-superficie-alta);
+}
+
+.navbar,
+#pie {
+    background-color: var(--np-superficie);
+}
+
+/* Los botones son la excepcion: .btn-primary NO lee --bs-primary, porque
+   Bootstrap le escribe el azul directamente dentro de la clase
+   (--bs-btn-bg:#0d6efd). Hay que reasignar sus variables propias.
+   En cambio .text-primary y .border-primary si leen --bs-primary en
+   tiempo de ejecucion, y ya tomaron la paleta sin hacer nada mas. */
+.btn-primary {
+    --bs-btn-bg: var(--np-acento);
+    --bs-btn-border-color: var(--np-acento);
+    --bs-btn-color: var(--np-fondo);
+    --bs-btn-hover-bg: #7a5aee;
+    --bs-btn-hover-border-color: #7a5aee;
+    --bs-btn-hover-color: var(--np-fondo);
+    --bs-btn-active-bg: #6b4fd8;
+    --bs-btn-active-border-color: #6b4fd8;
+    --bs-btn-active-color: var(--np-fondo);
+    --bs-btn-focus-shadow-rgb: 139, 108, 255;
+    /* El estado deshabilitado tiene sus propias variables: sin estas,
+       un boton apagado -como "Finalizar compra" con el carrito vacio-
+       vuelve al azul de Bootstrap en medio de la paleta del sitio. */
+    --bs-btn-disabled-bg: var(--np-acento);
+    --bs-btn-disabled-border-color: var(--np-acento);
+    --bs-btn-disabled-color: var(--np-fondo);
+}
+
+
+/* ============================================================
+   2. TIPOGRAFIA FLUIDA CON clamp()
+
+   Sugerencia del docente en la retroalimentacion de la Semana 3.
+   clamp(minimo, preferido, maximo) hace que el tamano escale de
+   forma continua con el ancho de la ventana, en lugar de saltar de
+   un valor a otro en cada punto de ruptura.
+
+   Los titulos usan la sans-serif; el texto corrido, la serif.
+   ============================================================ */
+h1,
+h2,
+h3 {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    color: var(--np-acento);
+}
+
+h2 {
+    font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+
+/* ============================================================
+   3. AJUSTES PUNTUALES
+
+   Lo minimo para que los componentes de Bootstrap encajen con las
+   imagenes del sitio, que son SVG verticales de 320x400.
+   ============================================================ */
+
+/* Las portadas son verticales: se limita su alto dentro de la tarjeta
+   y se centran, para que las cuatro tarjetas de una fila queden parejas */
+.card-img-top {
+    height: 190px;
+    object-fit: contain;
+    padding: 0.75rem;
+}
+
+/* Los banners del carrusel son 1200x500; se acotan en pantallas grandes
+   para que la primera pantalla no quede ocupada solo por la imagen */
+.carousel-item img {
+    max-height: 420px;
+    object-fit: cover;
+}
+
+/* Enlaces del menu: el estado activo y el hover con el color de marca */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus-visible {
+    color: var(--np-acento);
+}
+
+
+/* ============================================================
+   4. ESTADOS QUE ACTIVA JAVASCRIPT
+
+   Estas clases no se usan en el HTML: las pone y las quita el
+   script con classList, segun la interaccion del usuario.
+   ============================================================ */
+
+/* Realce de tarjeta al pasar el cursor (evento mouseover).
+   La transicion hace visible el cambio sin que resulte brusco. */
+.card {
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card.realce {
+    border-color: var(--np-acento);
+    transform: translateY(-4px);
+}
+
+/* Botones de categoria: se ven como las etiquetas que eran antes,
+   pero ahora son <button> y responden al click */
+.filtro-categoria {
+    cursor: pointer;
+}
+
+/* Categoria seleccionada: se destaca con el color de marca */
+.filtro-categoria.activo {
+    background-color: var(--np-acento) !important;
+    color: var(--np-fondo) !important;
+}
+
+/* Quien navegue con teclado debe ver donde esta parado */
+.filtro-categoria:focus-visible {
+    outline: 2px solid var(--np-acento);
+    outline-offset: 2px;
+}
+
+/* Hueco para la barra fija al saltar a una seccion, ya sea por un
+   enlace del menu o por el scrollIntoView que hace el buscador. Sin
+   esto el titulo de la seccion queda escondido debajo de la navbar.
+   clamp() ajusta el hueco al alto real de la barra, que crece un poco
+   en pantallas grandes. */
+main > section,
+main section[id] {
+    scroll-margin-top: clamp(4rem, 8vw, 5.5rem);
+}
+
+/* Numero de unidades en el carrito. Va dentro del btn-group para
+   quedar alineado entre los botones de menos y mas, pero Bootstrap
+   atenua todo lo que lleva .disabled: aqui se le devuelve el
+   contraste, porque es un dato que hay que poder leer. */
+.cantidad-actual.disabled {
+    opacity: 1;
+    color: var(--np-texto);
+    font-weight: 700;
+    min-width: 2.5rem;
+}
+
+/* Buscador de la barra de navegacion: guarda defensiva. En un
+   contenedor flex, un elemento con min-width:auto no puede encogerse
+   por debajo de su ancho natural, y el .form-control de Bootstrap
+   lleva width:100%. Con min-width:0 el campo cede espacio en lugar de
+   empujar al boton fuera de la barra en pantallas estrechas. */
+#formBusqueda,
+#campoBusqueda {
+    min-width: 0;
+}
