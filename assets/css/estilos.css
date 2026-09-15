@@ -205,12 +205,24 @@ main section[id] {
     min-width: 2.5rem;
 }
 
-/* Buscador de la barra de navegacion: guarda defensiva. En un
-   contenedor flex, un elemento con min-width:auto no puede encogerse
-   por debajo de su ancho natural, y el .form-control de Bootstrap
-   lleva width:100%. Con min-width:0 el campo cede espacio en lugar de
-   empujar al boton fuera de la barra en pantallas estrechas. */
+/* Buscador de la barra de navegacion.
+
+   min-width:0 es una guarda defensiva: en un contenedor flex, un
+   elemento con min-width:auto no puede encogerse por debajo de su
+   ancho natural, y el .form-control de Bootstrap lleva width:100%.
+   Asi el campo cede espacio en vez de empujar al boton fuera. */
 #formBusqueda,
 #campoBusqueda {
     min-width: 0;
+}
+
+/* Solo con el menu colapsado el buscador ocupa el ancho completo y se
+   separa de los enlaces. Por encima de 992 px conserva su ancho
+   natural: darle el 100% ahi estrecha los enlaces del menu y parte en
+   dos la etiqueta "Carrito" y su contador. */
+@media (max-width: 991.98px) {
+    #formBusqueda {
+        width: 100%;
+        margin-top: 1rem;
+    }
 }
